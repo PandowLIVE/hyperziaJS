@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description"
+        content="Bite-Sized JavaScript — Learn JS fundamentals through interactive, tap-to-build code challenges. No typing required.">
+    <title>Bite-Sized JavaScript</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ═══════════ AUTH SCREEN ═══════════ -->
+    <section class="auth-screen active" id="auth-screen">
+        <div class="auth-container">
+            <div class="auth-logo">
+                <h1>Hyperzia JS</h1>
+                <p>Learn JavaScript, one bite at a time</p>
+            </div>
+
+            <div class="auth-card" id="auth-card">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Log In</button>
+                    <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Sign Up</button>
+                </div>
+
+                <form id="auth-form" onsubmit="handleAuth(event)">
+                    <div class="input-group">
+                        <label for="auth-username">Username</label>
+                        <input type="text" id="auth-username" placeholder="Enter username" autocomplete="username"
+                            required minlength="2" maxlength="20">
+                    </div>
+                    <div class="input-group">
+                        <label for="auth-password">Password</label>
+                        <input type="password" id="auth-password" placeholder="Enter password"
+                            autocomplete="current-password" required minlength="4">
+                    </div>
+                    <div class="auth-error" id="auth-error"></div>
+                    <button type="submit" class="btn-primary" id="auth-submit-btn">Log In</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ APP WRAPPER ═══════════ -->
+    <div id="app-wrapper">
+
+        <!-- ═══════════ HEADER ═══════════ -->
+        <header class="header" id="app-header">
+            <div class="header-inner">
+                <div class="logo">
+                    <div class="logo-icon">⚡</div>
+                    <span>Hyperzia JS</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px">
+                    <div class="xp-badge" id="header-xp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        <span id="xp-display">0 XP</span>
+                    </div>
+                    <button class="logout-btn" id="logout-btn" title="Log out">⏻</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ═══════════ MAIN CONTENT ═══════════ -->
+        <main class="main">
+            <!-- HOME -->
+            <section class="screen active" id="home-screen">
+                <div class="greeting">
+                    <h1 id="greeting-text">Let's Learn JS ⚡</h1>
+                    <p id="greeting-sub">Tap a module to begin a lesson</p>
+                </div>
+
+                <div class="progress-overview" id="progress-overview">
+                    <div class="progress-stats">
+                        <div class="progress-stat">
+                            <div class="label">Completed</div>
+                            <div class="value" id="stat-completed">0 / 30</div>
+                        </div>
+                        <div class="progress-stat">
+                            <div class="label">Total XP</div>
+                            <div class="value" id="stat-xp">0</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+                    </div>
+                </div>
+
+                <div class="section-title">Modules</div>
+                <div class="course-tabs" id="course-tabs">
+                    <button class="course-tab active" data-cat="all" onclick="filterCourse('all')">All</button>
+                    <button class="course-tab" data-cat="js" onclick="filterCourse('js')">⚡ JavaScript</button>
+                    <button class="course-tab" data-cat="ts" onclick="filterCourse('ts')">🔷 TypeScript</button>
+                    <button class="course-tab" data-cat="node" onclick="filterCourse('node')">🟢 Node.js</button>
+                </div>
+                <div class="module-list" id="module-list"></div>
+            </section>
+
+            <!-- LESSON -->
+            <section class="screen" id="lesson-screen">
+                <div class="lesson-header">
+                    <button class="back-btn" id="back-btn" aria-label="Go back">←</button>
+                    <h2 id="lesson-title">—</h2>
+                    <span class="step-indicator" id="step-indicator">1 / 3</span>
+                </div>
+                <div class="step-dots" id="step-dots"></div>
+                <div id="lesson-content" class="pad-bottom"></div>
+            </section>
+
+            <!-- COMPLETION -->
+            <section class="screen" id="complete-screen">
+                <div class="completion-card">
+                    <div class="trophy">🏆</div>
+                    <h2 id="complete-title">Module Complete!</h2>
+                    <div class="xp-earned" id="complete-xp">⭐ +50 XP</div>
+                    <p id="complete-msg">You're making great progress. Keep going!</p>
+                    <button class="btn-primary" id="complete-home-btn" style="max-width:320px;margin:0 auto">Back to
+                        Modules</button>
+                </div>
+            </section>
+
+            <!-- SANDBOX -->
+            <section class="screen" id="sandbox-screen">
+                <div class="sandbox-header">
+                    <h2>🧪 Sandbox</h2>
+                    <p>Write and run code freely</p>
+                </div>
+                <div class="sandbox-lang-tabs">
+                    <button class="sandbox-lang-tab active" data-lang="javascript">⚡ JavaScript</button>
+                    <button class="sandbox-lang-tab" data-lang="typescript">🔷 TypeScript</button>
+                </div>
+                <div class="sandbox-editor-wrap">
+                    <textarea id="sandbox-editor" class="sandbox-editor" spellcheck="false"
+                        placeholder="Type your JavaScript here..."></textarea>
+                </div>
+                <div class="sandbox-actions">
+                    <button class="btn-sandbox run" id="sandbox-run">▶ Run</button>
+                    <button class="btn-sandbox clear" id="sandbox-clear">✕ Clear</button>
+                </div>
+                <div class="sandbox-output-label">Console Output</div>
+                <div class="sandbox-output" id="sandbox-output">
+                    <span class="sandbox-placeholder">Output will appear here…</span>
+                </div>
+            </section>
+        </main>
+
+        <!-- ═══════════ ACTION BAR ═══════════ -->
+        <div class="action-bar" id="action-bar" style="display:none">
+            <div class="action-bar-inner">
+                <button class="btn-primary" id="action-btn" disabled>Check Answer</button>
+            </div>
+        </div>
+
+        <!-- ═══════════ BOTTOM NAV ═══════════ -->
+        <nav class="bottom-nav" id="bottom-nav">
+            <button class="nav-item active" data-screen="home" id="nav-learn" onclick="switchTab('home')">
+                <span class="nav-icon">📚</span>
+                <span class="nav-label">Learn</span>
+            </button>
+            <button class="nav-item" data-screen="sandbox" id="nav-sandbox" onclick="switchTab('sandbox')">
+                <span class="nav-icon">🧪</span>
+                <span class="nav-label">Sandbox</span>
+            </button>
+        </nav>
+
+        <!-- ═══════════ FEEDBACK MODAL ═══════════ -->
+        <div class="modal-overlay" id="modal-overlay">
+            <div class="modal-sheet" id="modal-sheet">
+                <div class="icon-circle" id="modal-icon">✓</div>
+                <h3 id="modal-title">Correct!</h3>
+                <p id="modal-text">—</p>
+                <button class="btn-modal" id="modal-btn">Continue</button>
+            </div>
+        </div>
+
+        <!-- ═══════════ CONFETTI ═══════════ -->
+        <div class="confetti-container" id="confetti-container"></div>
+    </div>
+
+    <!-- ═══════════ SCRIPTS ═══════════ -->
+    <script src="modules.js"></script>
+    <script src="sandbox.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

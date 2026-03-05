@@ -1,0 +1,22 @@
+{
+  "name": "hyperziajs",
+  "version": "1.0.0",
+  "description": "Bite-Sized JavaScript — Interactive JS learning app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "javascript",
+    "learning",
+    "interactive",
+    "quiz"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.0"
+  }
+}
