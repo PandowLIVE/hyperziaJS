@@ -1,20 +1,20 @@
-const MODULES = [
+const MODULES_FR = [
   {
     "id": "variables",
     "category": "js",
-    "title": "Variables & Constants",
-    "desc": "let, const, and when to use each",
+    "title": "Variables & Constantes",
+    "desc": "let, const, et quand utiliser chacun",
     "icon": "📦",
     "xp": 50,
     "steps": [
       {
         "type": "theory",
-        "title": "Declaring Variables",
-        "body": "In modern JavaScript, we use <code>let</code> for values that change and <code>const</code> for values that stay the same. The old <code>var</code> keyword is rarely used today because it lacks block scoping."
+        "title": "Déclarer des variables",
+        "body": "En JavaScript moderne, nous utilisons <code>let</code> pour les valeurs qui changent et <code>const</code> pour les valeurs qui restent les mêmes. L'ancien mot-clé <code>var</code> est rarement utilisé aujourd'hui car il n'a pas de portée de bloc."
       },
       {
         "type": "quiz",
-        "title": "Fill in the blanks",
+        "title": "Remplir les espaces",
         "code": [
           {
             "text": "// A value that will change",
@@ -54,11 +54,11 @@ const MODULES = [
           "const",
           "define"
         ],
-        "explanation": "<b>let</b> is for variables that will be reassigned. <b>const</b> is for constants — values that never change after assignment."
+        "explanation": "<b>let</b> est pour les variables qui seront réaffectées. <b>const</b> est pour les constantes — des valeurs qui ne changent jamais après affectation."
       },
       {
         "type": "quiz",
-        "title": "Fix the bug",
+        "title": "Corriger le bug",
         "code": [
           {
             "text": "const greeting = \"Hello\";",
@@ -88,7 +88,7 @@ const MODULES = [
           "var",
           "set"
         ],
-        "explanation": "Since we need to reassign <code>greeting</code>, the original declaration should use <b>let</b> instead of <code>const</code>. You can't reassign a <code>const</code>."
+        "explanation": "Puisque nous devons réaffecter <code>greeting</code>, la déclaration d'origine doit utiliser <b>let</b> au lieu de <code>const</code>. On ne peut pas réaffecter une <code>const</code>."
       },
       {
         "type": "quiz",
@@ -136,7 +136,7 @@ const MODULES = [
           "const",
           "global"
         ],
-        "explanation": "<b>let</b> and <b>const</b> are block-scoped — they only exist inside the <code>{ }</code> block where they're declared. <code>var</code> would leak out."
+        "explanation": "<b>let</b> et <b>const</b> ont une portée de bloc — ils n'existent qu'à l'intérieur du bloc <code>{ }</code> où ils sont déclarés. <code>var</code> s'échapperait."
       },
       {
         "type": "quiz",
@@ -202,19 +202,19 @@ const MODULES = [
   {
     "id": "data-types",
     "category": "js",
-    "title": "Data Types",
-    "desc": "Strings, numbers, booleans & more",
+    "title": "Types de données",
+    "desc": "Chaînes, nombres, booléens & plus",
     "icon": "🔤",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
-        "title": "Primitive Types",
+        "title": "Types primitifs",
         "body": "JavaScript has 7 primitive data types: <code>string</code>, <code>number</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>, <code>symbol</code>, and <code>bigint</code>. You can check a value's type using <code>typeof</code>."
       },
       {
         "type": "quiz",
-        "title": "What's the type?",
+        "title": "Quel est le type ?",
         "code": [
           {
             "text": "let name = \"Alice\";",
@@ -266,7 +266,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "True or false?",
+        "title": "Vrai ou faux ?",
         "code": [
           {
             "text": "let isActive = ",
@@ -311,7 +311,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Null vs Undefined",
+        "title": "Null vs Undéfini",
         "code": [
           {
             "text": "let a;",
@@ -414,19 +414,19 @@ const MODULES = [
   {
     "id": "template-literals",
     "category": "js",
-    "title": "Template Literals",
-    "desc": "Backticks, interpolation & multi-line",
+    "title": "Littéraux de gabarits",
+    "desc": "Backticks, interpolation & multi-lignes",
     "icon": "✨",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
-        "title": "String Interpolation",
+        "title": "Interpolation de chaîne",
         "body": "Template literals use backticks (<code>`</code>) instead of quotes. They let you embed expressions inside <code>${ }</code> placeholders — no more messy string concatenation!"
       },
       {
         "type": "quiz",
-        "title": "Build a greeting",
+        "title": "Construire un message d'accueil",
         "code": [
           {
             "text": "const user = \"Sam\";",
@@ -481,7 +481,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Multi-line magic",
+        "title": "Magie multi-lignes",
         "code": [
           {
             "text": "const html = `",
@@ -536,7 +536,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Expression inside ${}",
+        "title": "Expression à l'intérieur de ${}",
         "code": [
           {
             "text": "const price = 9.99;",
@@ -589,7 +589,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Tagged template",
+        "title": "Modèle étiqueté",
         "code": [
           {
             "text": "const name = \"Ada\";",
@@ -644,19 +644,19 @@ const MODULES = [
   {
     "id": "arrow-functions",
     "category": "js",
-    "title": "Arrow Functions",
-    "desc": "Concise syntax with =>",
+    "title": "Fonctions Fléchées",
+    "desc": "Syntaxe concise avec =>",
     "icon": "➡️",
     "xp": 70,
     "steps": [
       {
         "type": "theory",
-        "title": "The Arrow Syntax",
+        "title": "La syntaxe de la flèche",
         "body": "Arrow functions (<code>=></code>) provide a shorter way to write functions. If the function body is a single expression, you can omit the curly braces and the <code>return</code> keyword — the value is returned implicitly."
       },
       {
         "type": "quiz",
-        "title": "Convert to arrow",
+        "title": "Convertir en flèche",
         "code": [
           {
             "text": "// Traditional",
@@ -710,7 +710,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Arrow with body",
+        "title": "Flèche avec corps",
         "code": [
           {
             "text": "const greet = (name) => ",
@@ -772,7 +772,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "No parentheses shortcut",
+        "title": "Raccourci sans parenthèses",
         "code": [
           {
             "text": "// One parameter = no parens needed",
@@ -821,7 +821,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Arrow in callback",
+        "title": "Flèche en rappel (callback)",
         "code": [
           {
             "text": "const nums = [1, 2, 3];",
@@ -869,19 +869,19 @@ const MODULES = [
   {
     "id": "array-map",
     "category": "js",
-    "title": "Array Mapping",
-    "desc": ".map() to transform arrays",
+    "title": "Mappage de Tableau",
+    "desc": ".map() pour transformer des tableaux",
     "icon": "🗺️",
     "xp": 80,
     "steps": [
       {
         "type": "theory",
-        "title": "Transforming Arrays",
+        "title": "Transformer des Tableaux",
         "body": "The <code>.map()</code> method creates a <b>new array</b> by calling a function on every element of the original. It doesn't modify the original array — it's a pure transformation."
       },
       {
         "type": "quiz",
-        "title": "Double every number",
+        "title": "Doubler chaque nombre",
         "code": [
           {
             "text": "const nums = [1, 2, 3, 4];",
@@ -934,7 +934,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Extract names",
+        "title": "Extraire les noms",
         "code": [
           {
             "text": "const users = [",
@@ -1008,7 +1008,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Map with index",
+        "title": "Map avec index",
         "code": [
           {
             "text": "const letters = [\"a\", \"b\", \"c\"];",
@@ -1050,7 +1050,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Chaining map",
+        "title": "Chaînage de map",
         "code": [
           {
             "text": "const prices = [10, 20, 30];",
@@ -1118,14 +1118,14 @@ const MODULES = [
   {
     "id": "conditionals",
     "category": "js",
-    "title": "Conditionals",
-    "desc": "if/else, ternary & logical operators",
+    "title": "Conditions",
+    "desc": "if/else, opérateur ternaire & logiques",
     "icon": "🔀",
     "xp": 70,
     "steps": [
       {
         "type": "theory",
-        "title": "Making Decisions",
+        "title": "Prendre des décisions",
         "body": "Use <code>if</code>/<code>else</code> to branch your code based on conditions. For shorter checks, the <b>ternary operator</b> (<code>condition ? a : b</code>) is perfect. JavaScript also has <code>&&</code> (AND) and <code>||</code> (OR) for combining conditions."
       },
       {
@@ -1335,14 +1335,14 @@ const MODULES = [
   {
     "id": "objects",
     "category": "js",
-    "title": "Objects",
-    "desc": "Properties, methods & destructuring",
+    "title": "Objets",
+    "desc": "Propriétés, méthodes & déstructuration",
     "icon": "🧱",
     "xp": 80,
     "steps": [
       {
         "type": "theory",
-        "title": "Object Basics",
+        "title": "Bases des Objets",
         "body": "Objects store data as <b>key-value pairs</b>. Access properties with <code>dot notation</code> (<code>obj.key</code>) or <code>bracket notation</code> (<code>obj[\"key\"]</code>). <b>Destructuring</b> lets you unpack properties into variables in one line."
       },
       {
@@ -1466,7 +1466,7 @@ const MODULES = [
       },
       {
         "type": "quiz",
-        "title": "Destructuring",
+        "title": "Déstructuration",
         "code": [
           {
             "text": "const book = { title: \"Dune\", pages: 412 };",
@@ -1577,14 +1577,14 @@ const MODULES = [
   {
     "id": "array-filter",
     "category": "js",
-    "title": "Array Filter",
-    "desc": ".filter() to select elements",
+    "title": "Filtre de Tableau",
+    "desc": ".filter() pour sélectionner des éléments",
     "icon": "🔍",
     "xp": 75,
     "steps": [
       {
         "type": "theory",
-        "title": "Filtering Arrays",
+        "title": "Filtrer des Tableaux",
         "body": "The <code>.filter()</code> method creates a new array containing only the elements that pass a <b>test function</b>. If the callback returns <code>true</code>, the element is kept; if <code>false</code>, it's excluded."
       },
       {
@@ -1803,13 +1803,13 @@ const MODULES = [
     "id": "spread-rest",
     "category": "js",
     "title": "Spread & Rest",
-    "desc": "The ... operator for arrays & objects",
+    "desc": "L'opérateur ... pour les tableaux & objets",
     "icon": "🌊",
     "xp": 85,
     "steps": [
       {
         "type": "theory",
-        "title": "The Three Dots",
+        "title": "Les Trois Points",
         "body": "The <code>...</code> operator has two roles: <b>spread</b> expands an array or object into individual elements, while <b>rest</b> collects multiple arguments into an array. Same syntax, opposite direction!"
       },
       {
@@ -2040,7 +2040,7 @@ const MODULES = [
   {
     "id": "async-await",
     "category": "js",
-    "title": "Promises & Async",
+    "title": "Promesses & Async",
     "desc": "Async/await for asynchronous code",
     "icon": "⏳",
     "xp": 100,
@@ -2318,7 +2318,7 @@ const MODULES = [
   {
     "id": "destructuring",
     "category": "js",
-    "title": "Destructuring",
+    "title": "Déstructuration",
     "desc": "Unpack arrays & objects in one line",
     "icon": "📦",
     "xp": 75,
@@ -2769,7 +2769,7 @@ const MODULES = [
   {
     "id": "error-handling",
     "category": "js",
-    "title": "Error Handling",
+    "title": "Gestion des Erreurs",
     "desc": "try, catch, throw & custom errors",
     "icon": "🛡️",
     "xp": 80,
@@ -2989,7 +2989,7 @@ const MODULES = [
   {
     "id": "closures",
     "category": "js",
-    "title": "Closures & Scope",
+    "title": "Fermetures & Portée",
     "desc": "Lexical scope & function closures",
     "icon": "🔒",
     "xp": 95,
@@ -3224,7 +3224,7 @@ const MODULES = [
   {
     "id": "string-methods",
     "category": "js",
-    "title": "String Methods",
+    "title": "Méthodes de Chaîne",
     "desc": "slice, split, includes & more",
     "icon": "🔤",
     "xp": 70,
@@ -3991,7 +3991,7 @@ const MODULES = [
   {
     "id": "ts-unions",
     "category": "ts",
-    "title": "TS: Union Types",
+    "title": "TS: Types d'Union",
     "desc": "Combine types with the | operator",
     "icon": "🔗",
     "xp": 80,
@@ -4238,7 +4238,7 @@ const MODULES = [
   {
     "id": "ts-generics",
     "category": "ts",
-    "title": "TS: Generics",
+    "title": "TS: Génériques",
     "desc": "Reusable types with <T>",
     "icon": "🧬",
     "xp": 100,
@@ -4433,7 +4433,7 @@ const MODULES = [
   {
     "id": "ts-enums",
     "category": "ts",
-    "title": "TS: Enums",
+    "title": "TS: Énumérations",
     "desc": "Named constants with enum",
     "icon": "📋",
     "xp": 75,
@@ -4648,7 +4648,7 @@ const MODULES = [
   {
     "id": "ts-type-aliases",
     "category": "ts",
-    "title": "TS: Type Aliases",
+    "title": "TS: Alias de Type",
     "desc": "Create custom types with type keyword",
     "icon": "🏷️",
     "xp": 75,
@@ -4785,7 +4785,7 @@ const MODULES = [
   {
     "id": "ts-guards",
     "category": "ts",
-    "title": "TS: Type Guards",
+    "title": "TS: Gardes de Type",
     "desc": "Runtime checks for type safety",
     "icon": "🛡️",
     "xp": 90,
@@ -5005,7 +5005,7 @@ const MODULES = [
   {
     "id": "ts-utility",
     "category": "ts",
-    "title": "TS: Utility Types",
+    "title": "TS: Types Utilitaires",
     "desc": "Partial, Required, Pick & more",
     "icon": "🧰",
     "xp": 95,
@@ -5777,7 +5777,7 @@ const MODULES = [
   {
     "id": "node-fs",
     "category": "node",
-    "title": "Node: File System",
+    "title": "Node: Système de Fichiers",
     "desc": "Read, write & work with files",
     "icon": "📁",
     "xp": 85,
@@ -6024,7 +6024,7 @@ const MODULES = [
   {
     "id": "node-http",
     "category": "node",
-    "title": "Node: HTTP Server",
+    "title": "Node: Serveur HTTP",
     "desc": "Create servers with the http module",
     "icon": "🌐",
     "xp": 90,
@@ -6242,7 +6242,7 @@ const MODULES = [
   {
     "id": "node-express",
     "category": "node",
-    "title": "Node: Express Basics",
+    "title": "Node: Bases de Express",
     "desc": "Routes, middleware & REST APIs",
     "icon": "🚀",
     "xp": 95,
@@ -6508,7 +6508,7 @@ const MODULES = [
   {
     "id": "node-env",
     "category": "node",
-    "title": "Node: Env Variables",
+    "title": "Node: Variables d'Env",
     "desc": "process.env, dotenv & config",
     "icon": "🔐",
     "xp": 75,
@@ -6670,7 +6670,7 @@ const MODULES = [
   {
     "id": "node-npm",
     "category": "node",
-    "title": "Node: npm & Packages",
+    "title": "Node: npm & Paquets",
     "desc": "Install, manage & use packages",
     "icon": "📋",
     "xp": 75,
@@ -6801,7 +6801,7 @@ const MODULES = [
   {
     "id": "node-streams",
     "category": "node",
-    "title": "Node: Streams",
+    "title": "Node: Flux (Streams)",
     "desc": "Read & write data efficiently",
     "icon": "🌊",
     "xp": 90,
@@ -6998,7 +6998,7 @@ const MODULES = [
   {
     "id": "node-events",
     "category": "node",
-    "title": "Node: Events",
+    "title": "Node: Événements",
     "desc": "EventEmitter & custom events",
     "icon": "📡",
     "xp": 80,
@@ -7162,7 +7162,7 @@ const MODULES = [
   {
     "id": "node-errors",
     "category": "node",
-    "title": "Node: Error Handling",
+    "title": "Node: Gestion des Erreurs",
     "desc": "Error-first callbacks & unhandled errors",
     "icon": "⚠️",
     "xp": 85,
@@ -7554,19 +7554,19 @@ const MODULES = [
   {
     "id": "py-basics",
     "category": "py",
-    "title": "Python Basics",
-    "desc": "Variables, loops, and conditions",
+    "title": "Bases de Python",
+    "desc": "Variables, boucles et conditions",
     "icon": "🐍",
     "xp": 50,
     "steps": [
       {
         "type": "theory",
-        "title": "Declaring Variables",
-        "body": "Unlike JavaScript, Python does not use let or const. You simply assign a value to a variable name."
+        "title": "Déclarer des variables",
+        "body": "Contrairement à JavaScript, Python n'utilise pas let ou const. Vous assignez simplement une valeur à un nom de variable."
       },
       {
         "type": "quiz",
-        "title": "Fill in the blanks",
+        "title": "Remplir les espaces",
         "code": [
           {
             "text": "# A new variable\n",
@@ -7593,26 +7593,26 @@ const MODULES = [
           "let",
           "var"
         ],
-        "explanation": "Python uses the <b>=</b> operator to assign variables, without any keyword."
+        "explanation": "Python utilise l'opérateur <b>=</b> pour assigner des variables, sans mot-clé."
       }
     ]
   },
   {
     "id": "py-functions",
     "category": "py",
-    "title": "Python Functions",
-    "desc": "def, parameters, and returns",
+    "title": "Fonctions Python",
+    "desc": "def, paramètres et retours",
     "icon": "🛠️",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
         "title": "Declaring Functions",
-        "body": "In Python, functions are defined using the <code>def</code> keyword followed by the function name, parentheses, and a colon."
+        "body": "En Python, les fonctions sont définies avec le mot-clé <code>def</code> suivi du nom de la fonction, de parenthèses et d'un deux-points."
       },
       {
         "type": "quiz",
-        "title": "Fill in the blanks",
+        "title": "Remplir les espaces",
         "code": [
           {
             "text": "# A simple function\n",
@@ -7635,26 +7635,26 @@ const MODULES = [
           "func",
           "fn"
         ],
-        "explanation": "Python uses the <b>def</b> keyword to define functions."
+        "explanation": "Python utilise le mot-clé <b>def</b> pour définir des fonctions."
       }
     ]
   },
   {
     "id": "py-lists",
     "category": "py",
-    "title": "Python Lists",
-    "desc": "Arrays and Tuples in Python",
+    "title": "Listes Python",
+    "desc": "Tableaux et Tuples en Python",
     "icon": "📋",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
-        "title": "Lists vs Tuples",
-        "body": "In Python, a <code>list</code> is mutable (can be changed) and defined with brackets <code>[]</code>. A <code>tuple</code> is immutable and defined with parentheses <code>()</code>."
+        "title": "Listes vs Tuples",
+        "body": "En Python, une <code>liste</code> (list) est mutable (peut être modifiée) et définie avec des crochets <code>[]</code>. Un <code>tuple</code> est immuable et défini avec des parenthèses <code>()</code>."
       },
       {
         "type": "quiz",
-        "title": "Create a list",
+        "title": "Créer une liste",
         "code": [
           {
             "text": "colors = ",
@@ -7688,26 +7688,26 @@ const MODULES = [
           ")",
           "{"
         ],
-        "explanation": "Lists are created using square brackets <b>[]</b> and can be modified with methods like <code>.append()</code>."
+        "explanation": "Les listes sont créées à l'aide de crochets <b>[]</b> et peuvent être modifiées avec des méthodes telles que <code>.append()</code>."
       }
     ]
   },
   {
     "id": "py-dicts",
     "category": "py",
-    "title": "Dictionaries",
-    "desc": "Key-value pairs in Python",
+    "title": "Dictionnaires",
+    "desc": "Paires clé-valeur en Python",
     "icon": "📖",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
-        "title": "Python Dictionaries",
-        "body": "Python dictionaries store data in key-value pairs, similar to JavaScript objects. They are defined using curly braces <code>{}</code>."
+        "title": "Dictionnaires Python",
+        "body": "Les dictionnaires Python stockent les données sous forme de paires clé-valeur, similaires aux objets JavaScript. Ils sont définis en utilisant des accolades <code>{}</code>."
       },
       {
         "type": "quiz",
-        "title": "Access a dictionary",
+        "title": "Accéder à un dictionnaire",
         "code": [
           {
             "text": "user = {\"name\": \"Alice\", \"age\": 25}\n",
@@ -7745,26 +7745,26 @@ const MODULES = [
           ")",
           "."
         ],
-        "explanation": "In Python, dictionary values are accessed using bracket notation <b>[]</b> with the key as a string."
+        "explanation": "En Python, les valeurs des dictionnaires sont accessibles en utilisant la notation des crochets <b>[]</b> avec la clé comme chaîne."
       }
     ]
   },
   {
     "id": "py-loops",
     "category": "py",
-    "title": "Loops",
-    "desc": "For & While loops in Python",
+    "title": "Boucles",
+    "desc": "Boucles For & While en Python",
     "icon": "🔁",
     "xp": 65,
     "steps": [
       {
         "type": "theory",
-        "title": "For Loops",
-        "body": "Python <code>for</code> loops iterate over sequences (like lists or strings). There is no traditional C-style <code>for(i=0; i<n; i++)</code> loop."
+        "title": "Boucles For",
+        "body": "Les boucles <code>for</code> en Python itèrent sur des séquences (comme des listes ou des chaînes). Il n'y a pas de boucle traditionnelle de style C <code>for(i=0; i<n; i++)</code>."
       },
       {
         "type": "quiz",
-        "title": "Loop over a list",
+        "title": "Boucler sur une liste",
         "code": [
           {
             "text": "nums = [1, 2, 3]\n",
@@ -7797,7 +7797,7 @@ const MODULES = [
           "of",
           "while"
         ],
-        "explanation": "Python uses the <b>for ... in ...</b> syntax to iterate through elements of a sequence."
+        "explanation": "Python utilise la syntaxe <b>for ... in ...</b> pour itérer à travers les éléments d'une séquence."
       }
     ]
   },
@@ -7805,18 +7805,18 @@ const MODULES = [
     "id": "py-classes",
     "category": "py",
     "title": "Classes",
-    "desc": "Object-Oriented Python",
+    "desc": "Python orienté objet",
     "icon": "🏗️",
     "xp": 75,
     "steps": [
       {
         "type": "theory",
-        "title": "Creating Classes",
-        "body": "Classes in Python are created using the <code>class</code> keyword. The constructor method is always named <code>__init__</code>."
+        "title": "Création de Classes",
+        "body": "Les classes en Python sont créées à l'aide du mot-clé <code>class</code>. La méthode constructeur est toujours nommée <code>__init__</code>."
       },
       {
         "type": "quiz",
-        "title": "Define a class",
+        "title": "Définir une classe",
         "code": [
           {
             "text": "",
@@ -7845,7 +7845,7 @@ const MODULES = [
           "constructor",
           "def"
         ],
-        "explanation": "Use <b>class</b> to define a class and <b>__init__</b> as the constructor method."
+        "explanation": "Utilisez <b>class</b> pour définir une classe et <b>__init__</b> comme méthode constructeur."
       }
     ]
   },
@@ -7853,18 +7853,18 @@ const MODULES = [
     "id": "py-exceptions",
     "category": "py",
     "title": "Exceptions",
-    "desc": "Try/Except blocks",
+    "desc": "Blocs Try/Except",
     "icon": "⚠️",
     "xp": 70,
     "steps": [
       {
         "type": "theory",
-        "title": "Handling Errors",
-        "body": "Python uses <code>try</code> and <code>except</code> blocks to handle errors gracefully, similar to <code>try / catch</code> in JS."
+        "title": "Gestion des Erreurs",
+        "body": "Python utilise des blocs <code>try</code> et <code>except</code> pour gérer gracieusement les erreurs, similairement à <code>try / catch</code> en JS."
       },
       {
         "type": "quiz",
-        "title": "Catch an error",
+        "title": "Attraper une erreur",
         "code": [
           {
             "text": "",
@@ -7893,26 +7893,26 @@ const MODULES = [
           "catch",
           "error"
         ],
-        "explanation": "Python uses <b>try</b> to test a block of code, and <b>except</b> to handle the error."
+        "explanation": "Python utilise <b>try</b> pour tester un bloc de code, et <b>except</b> pour gérer l'erreur."
       }
     ]
   },
   {
     "id": "py-imports",
     "category": "py",
-    "title": "Imports",
-    "desc": "Modules and Packages",
+    "title": "Importations",
+    "desc": "Modules et Paquets",
     "icon": "📦",
     "xp": 65,
     "steps": [
       {
         "type": "theory",
-        "title": "Importing Modules",
-        "body": "You can include external code using the <code>import</code> keyword, or import specific parts using <code>from ... import ...</code>."
+        "title": "Importer des Modules",
+        "body": "Vous pouvez inclure du code externe en utilisant le mot-clé <code>import</code>, ou importer des parties spécifiques en utilisant <code>from ... import ...</code>."
       },
       {
         "type": "quiz",
-        "title": "Import a module",
+        "title": "Importer un module",
         "code": [
           {
             "text": "",
@@ -7931,26 +7931,26 @@ const MODULES = [
           "require",
           "from"
         ],
-        "explanation": "The <b>import</b> keyword is used to bring an entire module into your script."
+        "explanation": "Le mot-clé <b>import</b> est utilisé pour introduire un module entier dans votre script."
       }
     ]
   },
   {
     "id": "py-comprehensions",
     "category": "py",
-    "title": "List Comprehensions",
-    "desc": "Elegant list creation",
+    "title": "Compréhensions de Liste",
+    "desc": "Création de liste élégante",
     "icon": "🌟",
     "xp": 80,
     "steps": [
       {
         "type": "theory",
-        "title": "What are Comprehensions?",
-        "body": "List comprehensions provide a shorter syntax to create a new list based on the values of an existing list."
+        "title": "Que sont les compréhensions ?",
+        "body": "Les compréhensions de listes offrent une syntaxe plus courte pour créer une nouvelle liste en fonction des valeurs d'une liste existante."
       },
       {
         "type": "quiz",
-        "title": "Double every number",
+        "title": "Doubler chaque nombre",
         "code": [
           {
             "text": "nums = [1, 2, 3]\n",
@@ -7987,26 +7987,26 @@ const MODULES = [
           "of",
           "if"
         ],
-        "explanation": "A list comprehension resembles a backwards for loop: <code>[expression <b>for</b> item <b>in</b> list]</code>."
+        "explanation": "Une compréhension de liste ressemble à une boucle for à l'envers : <code>[expression <b>for</b> item <b>in</b> list]</code>."
       }
     ]
   },
   {
     "id": "py-lambda",
     "category": "py",
-    "title": "Lambda Functions",
-    "desc": "Anonymous functions",
+    "title": "Fonctions Lambda",
+    "desc": "Fonctions anonymes",
     "icon": "λ",
     "xp": 75,
     "steps": [
       {
         "type": "theory",
-        "title": "Lambda syntax",
-        "body": "A <code>lambda</code> function is a small anonymous function. It can take any number of arguments, but can only have one expression."
+        "title": "Syntaxe Lambda",
+        "body": "Une fonction <code>lambda</code> est une petite fonction anonyme. Elle peut prendre n'importe quel nombre d'arguments, mais ne peut avoir qu'une seule expression."
       },
       {
         "type": "quiz",
-        "title": "Create a lambda",
+        "title": "Créer une lambda",
         "code": [
           {
             "text": "double = ",
@@ -8039,26 +8039,26 @@ const MODULES = [
           "->",
           "def"
         ],
-        "explanation": "The <b>lambda</b> keyword declares an anonymous function, and a <b>:</b> separates the arguments from the expression."
+        "explanation": "Le mot-clé <b>lambda</b> déclare une fonction anonyme, et un <b>:</b> sépare les arguments de l'expression."
       }
     ]
   },
   {
     "id": "bash-intro",
     "category": "bash",
-    "title": "Bash: Introduction",
-    "desc": "Terminals, Shells, and the Echo command",
+    "title": "Bash : Introduction",
+    "desc": "Terminaux, Shells et la commande Echo",
     "icon": "🐚",
     "xp": 50,
     "steps": [
       {
         "type": "theory",
-        "title": "The Shell",
-        "body": "The shell is a command-line interpreter. Bash (Bourne Again SHell) is the default shell for most Linux and macOS systems. You communicate with the machine by typing commands."
+        "title": "Le Shell",
+        "body": "Le shell est un interpréteur de ligne de commande. Bash (Bourne Again SHell) est le shell par défaut pour la plupart des systèmes Linux et macOS. Vous communiquez avec la machine en tapant des commandes."
       },
       {
         "type": "quiz",
-        "title": "Hello Bash",
+        "title": "Bonjour Bash",
         "code": [
           {
             "text": "# Print text to the terminal\n",
@@ -8081,26 +8081,26 @@ const MODULES = [
           "log",
           "say"
         ],
-        "explanation": "The <b>echo</b> command prints text or variables to the standard output."
+        "explanation": "La commande <b>echo</b> affiche du texte ou des variables sur la sortie standard."
       }
     ]
   },
   {
     "id": "bash-ls",
     "category": "bash",
-    "title": "Bash: Navigation",
-    "desc": "ls, cd, and pwd",
+    "title": "Bash : Navigation",
+    "desc": "ls, cd et pwd",
     "icon": "📁",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
-        "title": "Listing Files",
-        "body": "To see what files are in your current directory, use <code>ls</code>. To see hidden files, use <code>ls -a</code>."
+        "title": "Lister les Fichiers",
+        "body": "Pour voir quels fichiers se trouvent dans votre répertoire actuel, utilisez <code>ls</code>. Pour voir les fichiers cachés, utilisez <code>ls -a</code>."
       },
       {
         "type": "quiz",
-        "title": "Where am I?",
+        "title": "Où suis-je ?",
         "code": [
           {
             "text": "# Print current working directory\n",
@@ -8138,26 +8138,26 @@ const MODULES = [
           "a",
           "dir"
         ],
-        "explanation": "<b>pwd</b> shows your \"Print Working Directory\", and <b>ls -l</b> shows files in a \"long\" list format with details."
+        "explanation": "<b>pwd</b> affiche votre répertoire de travail actuel, et <b>ls -l</b> affiche les fichiers sous un format de liste \"long\" avec des détails."
       }
     ]
   },
   {
     "id": "bash-mkdir",
     "category": "bash",
-    "title": "Bash: File Ops",
-    "desc": "mkdir, touch, and rm",
+    "title": "Bash : Ops Fichiers",
+    "desc": "mkdir, touch et rm",
     "icon": "🛠️",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
-        "title": "Creating and Removing",
-        "body": "Use <code>mkdir</code> to create folders, <code>touch</code> to create empty files, and <code>rm</code> to remove them. Be careful: <code>rm</code> is permanent!"
+        "title": "Création et Suppression",
+        "body": "Utilisez <code>mkdir</code> pour créer des dossiers, <code>touch</code> pour créer des fichiers vides et <code>rm</code> pour les supprimer. Attention : <code>rm</code> est permanent !"
       },
       {
         "type": "quiz",
-        "title": "Create a structure",
+        "title": "Créer une structure",
         "code": [
           {
             "text": "# Create a directory named data\n",
@@ -8195,26 +8195,26 @@ const MODULES = [
           "make",
           "create"
         ],
-        "explanation": "<b>mkdir</b> (make directory) and <b>touch</b> are the standard ways to create storage structures."
+        "explanation": "<b>mkdir</b> (créer un répertoire) et <b>touch</b> sont les moyens standards de créer des structures de stockage."
       }
     ]
   },
   {
     "id": "bash-cat",
     "category": "bash",
-    "title": "Bash: Reading Files",
-    "desc": "cat, head, tail, and less",
+    "title": "Bash : Lecture de Fichiers",
+    "desc": "cat, head, tail et less",
     "icon": "📖",
     "xp": 65,
     "steps": [
       {
         "type": "theory",
-        "title": "Viewing Content",
-        "body": "To view the entire contents of a file, use <code>cat</code>. For large files, use <code>head</code> (top 10 lines) or <code>tail</code> (bottom 10 lines)."
+        "title": "Visualiser le Contenu",
+        "body": "Pour visualiser tout le contenu d'un fichier, utilisez <code>cat</code>. Pour les fichiers volumineux, utilisez <code>head</code> (10 premières lignes) ou <code>tail</code> (10 dernières lignes)."
       },
       {
         "type": "quiz",
-        "title": "Read the file",
+        "title": "Lire le fichier",
         "code": [
           {
             "text": "# Show first 5 lines of log.txt\n",
@@ -8237,26 +8237,26 @@ const MODULES = [
           "tail",
           "less"
         ],
-        "explanation": "<b>head</b> with the <code>-n</code> flag allows you to specify exactly how many lines from the top to read."
+        "explanation": "<b>head</b> avec le drapeau <code>-n</code> vous permet de spécifier exactement combien de lignes lire depuis le haut."
       }
     ]
   },
   {
     "id": "bash-vars",
     "category": "bash",
-    "title": "Bash: Variables",
-    "desc": "Declaring and using variables",
+    "title": "Bash : Variables",
+    "desc": "Déclarer et utiliser des variables",
     "icon": "💲",
     "xp": 70,
     "steps": [
       {
         "type": "theory",
-        "title": "Shell Variables",
-        "body": "Assign variables without spaces around the <code>=</code>. To access them, prefix the name with a <code>$</code> sign."
+        "title": "Variables du Shell",
+        "body": "Assignez des variables sans espaces autour du <code>=</code>. Pour y accéder, préfixez le nom avec un signe <code>$</code>."
       },
       {
         "type": "quiz",
-        "title": "Using variables",
+        "title": "Utilisation des variables",
         "code": [
           {
             "text": "NAME=\"Victor\"\n",
@@ -8283,26 +8283,26 @@ const MODULES = [
           "${NAME}",
           "var NAME"
         ],
-        "explanation": "In Bash, you must use the <b>$</b> prefix to \"expand\" a variable and get its value."
+        "explanation": "Dans Bash, vous devez utiliser le préfixe <b>$</b> pour \"développer\" une variable et obtenir sa valeur."
       }
     ]
   },
   {
     "id": "bash-pipes",
     "category": "bash",
-    "title": "Bash: Pipes & Redirection",
-    "desc": "Connecting commands with | and >",
+    "title": "Bash : Pipes et Redirection",
+    "desc": "Connecter les commandes avec | et >",
     "icon": "🏹",
     "xp": 80,
     "steps": [
       {
         "type": "theory",
-        "title": "Connecting Commands",
-        "body": "Pipes (<code>|</code>) take the output of one command and pass it as input to another. Redirection (<code>></code>) sends output to a file."
+        "title": "Connecter des Commandes",
+        "body": "Les pipes (<code>|</code>) prennent la sortie d'une commande et la passent comme entrée à une autre. La redirection (<code>></code>) envoie la sortie vers un fichier."
       },
       {
         "type": "quiz",
-        "title": "Save and Filter",
+        "title": "Sauvegarder et Filtrer",
         "code": [
           {
             "text": "# Save logs to a file\n",
@@ -8348,26 +8348,26 @@ const MODULES = [
           "<",
           "&"
         ],
-        "explanation": "<b>></b> overwrites a file with output. <b>|</b> connects the output of <code>cat</code> to the input of <code>grep</code>."
+        "explanation": "<b>></b> écrase un fichier avec la sortie. <b>|</b> connecte la sortie de <code>cat</code> à l'entrée de <code>grep</code>."
       }
     ]
   },
   {
     "id": "bash-grep",
     "category": "bash",
-    "title": "Bash: Grep",
-    "desc": "Searching text patterns",
+    "title": "Bash : Grep",
+    "desc": "Recherche de motifs de texte",
     "icon": "🔎",
     "xp": 75,
     "steps": [
       {
         "type": "theory",
-        "title": "Global Regular Expression Print",
-        "body": "<code>grep</code> is a powerful tool to search for strings or patterns within files. <code>grep -i</code> makes the search case-insensitive."
+        "title": "Impression d'expression régulière globale",
+        "body": "<code>grep</code> est un outil puissant pour rechercher des chaînes ou des motifs à l'intérieur des fichiers. <code>grep -i</code> rend la recherche insensible à la casse."
       },
       {
         "type": "quiz",
-        "title": "Search content",
+        "title": "Rechercher du contenu",
         "code": [
           {
             "text": "# Find \"root\" in /etc/passwd\n",
@@ -8390,26 +8390,26 @@ const MODULES = [
           "search",
           "locate"
         ],
-        "explanation": "<b>grep</b> scans the file for specific text and prints matching lines."
+        "explanation": "<b>grep</b> scanne le fichier pour un texte spécifique et affiche les lignes correspondantes."
       }
     ]
   },
   {
     "id": "bash-chmod",
     "category": "bash",
-    "title": "Bash: Permissions",
-    "desc": "chmod and ownership",
+    "title": "Bash : Permissions",
+    "desc": "chmod et propriété",
     "icon": "🔒",
     "xp": 85,
     "steps": [
       {
         "type": "theory",
         "title": "Permissions",
-        "body": "Linux files have Read (r), Write (w), and Execute (x) permissions. <code>chmod +x script.sh</code> makes a script executable."
+        "body": "Les fichiers Linux ont des permissions de lecture (r), écriture (w) et exécution (x). <code>chmod +x script.sh</code> rend un script exécutable."
       },
       {
         "type": "quiz",
-        "title": "Fix access",
+        "title": "Réparer l'accès",
         "code": [
           {
             "text": "# Make script executable\n",
@@ -8436,26 +8436,26 @@ const MODULES = [
           "-r",
           "u+r"
         ],
-        "explanation": "<b>chmod +x</b> adds execute permissions to the file, allowing it to run as a program."
+        "explanation": "<b>chmod +x</b> ajoute des permissions d'exécution au fichier, lui permettant d'être exécuté comme un programme."
       }
     ]
   },
   {
     "id": "bash-loops",
     "category": "bash",
-    "title": "Bash: Loops",
-    "desc": "For loops in the shell",
+    "title": "Bash : Boucles",
+    "desc": "Boucles For dans le shell",
     "icon": "➰",
     "xp": 80,
     "steps": [
       {
         "type": "theory",
-        "title": "Automation",
-        "body": "Loops in Bash let you process many files at once. The syntax is <code>for x in list; do ...; done</code>."
+        "title": "Automatisation",
+        "body": "Les boucles dans Bash vous permettent de traiter plusieurs fichiers à la fois. La syntaxe est <code>for x in list; do ...; done</code>."
       },
       {
         "type": "quiz",
-        "title": "The Done keyword",
+        "title": "Le mot-clé Done",
         "code": [
           {
             "text": "for file in *.txt; ",
@@ -8489,26 +8489,26 @@ const MODULES = [
           "fi",
           "loop"
         ],
-        "explanation": "Every <code>for</code> loop in Bash must start with <b>do</b> and end with <b>done</b>."
+        "explanation": "Chaque boucle <code>for</code> dans Bash doit commencer par <b>do</b> et se terminer par <b>done</b>."
       }
     ]
   },
   {
     "id": "bash-scripts",
     "category": "bash",
-    "title": "Bash: Scripts",
-    "desc": "Writing .sh files",
+    "title": "Bash : Scripts",
+    "desc": "Écrire des fichiers .sh",
     "icon": "📜",
     "xp": 90,
     "steps": [
       {
         "type": "theory",
-        "title": "Creating Scripts",
-        "body": "Shell scripts start with a \"shebang\" like <code>#!/bin/bash</code>. This tells the system which interpreter to use."
+        "title": "Création de Scripts",
+        "body": "Les scripts shell commencent par un \"shebang\" comme <code>#!/bin/bash</code>. Cela indique au système quel interpréteur utiliser."
       },
       {
         "type": "quiz",
-        "title": "The Shebang",
+        "title": "Le Shebang",
         "code": [
           {
             "text": "",
@@ -8527,22 +8527,22 @@ const MODULES = [
           "!#",
           "//"
         ],
-        "explanation": "The <b>#!</b> (shebang) on the first line specifies the path to the bash interpreter."
+        "explanation": "Le <b>#!</b> (shebang) sur la première ligne spécifie le chemin vers l'interpréteur bash."
       }
     ]
   },
   {
     "id": "py-slicing",
     "category": "py",
-    "title": "Python: Slicing",
-    "desc": "Cutting lists and strings",
+    "title": "Python : Slicing",
+    "desc": "Découper des listes et chaînes",
     "icon": "✂️",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
-        "title": "List Slicing",
-        "body": "You can extract parts of a list using the syntax <code>[start:stop:step]</code>."
+        "title": "Découpage de Liste (Slicing)",
+        "body": "Vous pouvez extraire des parties d'une liste en utilisant la syntaxe <code>[start:stop:step]</code>."
       },
       {
         "type": "quiz",
@@ -8573,22 +8573,22 @@ const MODULES = [
           ";",
           "|"
         ],
-        "explanation": "The <b>:</b> separator is used to define the range of the slice."
+        "explanation": "Le séparateur <b>:</b> est utilisé pour définir la plage du découpage."
       }
     ]
   },
   {
     "id": "py-sets",
     "category": "py",
-    "title": "Python: Sets",
-    "desc": "Unordered unique elements",
+    "title": "Python : Sets",
+    "desc": "Éléments uniques non ordonnés",
     "icon": "💎",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
-        "title": "What is a Set?",
-        "body": "A <code>set</code> is an unordered collection of items where every element is unique. Use it to remove duplicates."
+        "title": "Qu'est-ce qu'un Set ?",
+        "body": "Un <code>set</code> est une collection non ordonnée d'éléments où chaque élément est unique. Utilisez-le pour supprimer les doublons."
       },
       {
         "type": "quiz",
@@ -8615,22 +8615,22 @@ const MODULES = [
           "2",
           "1"
         ],
-        "explanation": "Sets only store <b>unique</b> values, so the duplicate 2 is ignored."
+        "explanation": "Les sets ne stockent que des valeurs <b>uniques</b>, donc le doublon 2 est ignoré."
       }
     ]
   },
   {
     "id": "py-fstrings",
     "category": "py",
-    "title": "Python: f-Strings",
-    "desc": "Modern string formatting",
+    "title": "Python : f-Strings",
+    "desc": "Formatage de texte moderne",
     "icon": "🧵",
     "xp": 55,
     "steps": [
       {
         "type": "theory",
-        "title": "Formatted Strings",
-        "body": "Using <code>f\"...\"</code> enables you to embed expressions directly inside strings using curly braces."
+        "title": "Chaînes Formatées",
+        "body": "L'utilisation de <code>f\"...\"</code> vous permet d'intégrer des expressions directement dans les chaînes à l'aide d'accolades."
       },
       {
         "type": "quiz",
@@ -8661,22 +8661,22 @@ const MODULES = [
           "s",
           "b"
         ],
-        "explanation": "The <b>f</b> prefix before the quotes creates a formatted string literal."
+        "explanation": "Le préfixe <b>f</b> devant les guillemets crée une chaîne littérale formatée."
       }
     ]
   },
   {
     "id": "py-anyall",
     "category": "py",
-    "title": "Python: Any & All",
-    "desc": "Checking multiple booleans",
+    "title": "Python : Any & All",
+    "desc": "Vérifier plusieurs booléens",
     "icon": "🚥",
     "xp": 65,
     "steps": [
       {
         "type": "theory",
-        "title": "Logic Helpers",
-        "body": "<code>any()</code> returns True if at least one item is True. <code>all()</code> returns True only if every item is True."
+        "title": "Aides Logiques",
+        "body": "<code>any()</code> renvoie True si au moins un élément est True. <code>all()</code> renvoie True uniquement si chaque élément est True."
       },
       {
         "type": "quiz",
@@ -8707,22 +8707,22 @@ const MODULES = [
           "sum",
           "max"
         ],
-        "explanation": "<b>any()</b> succeeds if there is at least one True value."
+        "explanation": "<b>any()</b> réussit s'il y a au moins une valeur True."
       }
     ]
   },
   {
     "id": "py-filter",
     "category": "py",
-    "title": "Python: Filter",
-    "desc": "Functional filtering",
+    "title": "Python : Filter",
+    "desc": "Filtrage fonctionnel",
     "icon": "🧹",
     "xp": 70,
     "steps": [
       {
         "type": "theory",
-        "title": "The filter() function",
-        "body": "Like in JS, <code>filter(func, sequence)</code> creates an iterator of elements for which the function returns True."
+        "title": "La fonction filter()",
+        "body": "Comme en JS, <code>filter(func, sequence)</code> crée un itérateur d'éléments pour lesquels la fonction renvoie True."
       },
       {
         "type": "quiz",
@@ -8753,22 +8753,22 @@ const MODULES = [
           "x",
           "0"
         ],
-        "explanation": "The <b>filter</b> function takes the iterable (nums) as its second argument."
+        "explanation": "La fonction <b>filter</b> prend l'itérable (nums) comme second argument."
       }
     ]
   },
   {
     "id": "py-zip",
     "category": "py",
-    "title": "Python: Zip",
-    "desc": "Iterate over multiple lists",
+    "title": "Python : Zip",
+    "desc": "Itérer sur plusieurs listes",
     "icon": "🤐",
     "xp": 65,
     "steps": [
       {
         "type": "theory",
-        "title": "Zipping Lists",
-        "body": "The <code>zip()</code> function takes iterables and aggregates them in a tuple. It stops at the shortest list."
+        "title": "Zipping de Listes",
+        "body": "La fonction <code>zip()</code> prend des itérables et les agrège dans un tuple. Elle s'arrête à la liste la plus courte."
       },
       {
         "type": "quiz",
@@ -8799,22 +8799,22 @@ const MODULES = [
           "join",
           "map"
         ],
-        "explanation": "<b>zip()</b> is the standard way to combine multiple lists of related data."
+        "explanation": "<b>zip()</b> est le moyen standard de combiner plusieurs listes de données liées."
       }
     ]
   },
   {
     "id": "py-sorting",
     "category": "py",
-    "title": "Python: Sorting",
-    "desc": "Arranging data",
+    "title": "Python : Tris",
+    "desc": "Organiser les données",
     "icon": "📊",
     "xp": 60,
     "steps": [
       {
         "type": "theory",
         "title": "sort() vs sorted()",
-        "body": "<code>list.sort()</code> sorts the list in-place. <code>sorted(list)</code> returns a brand new sorted list."
+        "body": "<code>list.sort()</code> trie la liste sur place. <code>sorted(list)</code> renvoie une toute nouvelle liste triée."
       },
       {
         "type": "quiz",
@@ -8845,22 +8845,22 @@ const MODULES = [
           "order",
           "arrange"
         ],
-        "explanation": "Use <b>sorted()</b> if you want to keep the original list unchanged."
+        "explanation": "Utilisez <b>sorted()</b> si vous voulez garder la liste originale inchangée."
       }
     ]
   },
   {
     "id": "py-decorators",
     "category": "py",
-    "title": "Python: Decorators",
-    "desc": "Wrapping functions",
+    "title": "Python : Décorateurs",
+    "desc": "Envelopper des fonctions",
     "icon": "🎁",
     "xp": 85,
     "steps": [
       {
         "type": "theory",
-        "title": "What is a Decorator?",
-        "body": "A decorator is a function that takes another function and extends its behavior without explicitly modifying it. The syntax uses the <code>@</code> symbol."
+        "title": "Qu'est-ce qu'un Décorateur ?",
+        "body": "Un décorateur est une fonction qui en prend une autre et étend son comportement sans la modifier explicitement. La syntaxe utilise le symbole <code>@</code>."
       },
       {
         "type": "quiz",
@@ -8883,22 +8883,22 @@ const MODULES = [
           "$",
           "&"
         ],
-        "explanation": "The <b>@</b> symbol is used to apply a decorator to a function definition."
+        "explanation": "Le symbole <b>@</b> est utilisé pour appliquer un décorateur à une définition de fonction."
       }
     ]
   },
   {
     "id": "py-with",
     "category": "py",
-    "title": "Python: Context Managers",
-    "desc": "The with statement",
+    "title": "Python : Gestionnaires de Contexte",
+    "desc": "L'instruction with",
     "icon": "🔓",
     "xp": 80,
     "steps": [
       {
         "type": "theory",
-        "title": "Automatic Cleanup",
-        "body": "The <code>with</code> statement simplifies error handling by encapsulating common preparation and cleanup tasks (like closing files)."
+        "title": "Nettoyage Automatique",
+        "body": "L'instruction <code>with</code> simplifie la gestion des erreurs en encapsulant les tâches courantes de préparation et de nettoyage (comme la fermeture de fichiers)."
       },
       {
         "type": "quiz",
@@ -8921,22 +8921,22 @@ const MODULES = [
           "try",
           "open"
         ],
-        "explanation": "The <b>with</b> keyword ensures the file is automatically closed even if an error occurs."
+        "explanation": "Le mot-clé <b>with</b> garantit que le fichier est automatiquement fermé même si une erreur survient."
       }
     ]
   },
   {
     "id": "py-argv",
     "category": "py",
-    "title": "Python: CLI Args",
-    "desc": "Reading command line input",
+    "title": "Python : Args CLI",
+    "desc": "Lire l'entrée en ligne de commande",
     "icon": "⌨️",
     "xp": 75,
     "steps": [
       {
         "type": "theory",
-        "title": "Command Line Arguments",
-        "body": "The <code>sys.argv</code> list contains the command-line arguments passed to a script. Index 0 is always the script name."
+        "title": "Arguments de Ligne de Commande",
+        "body": "La liste <code>sys.argv</code> contient les arguments de la ligne de commande passés à un script. L'index 0 est toujours le nom du script."
       },
       {
         "type": "quiz",
@@ -8967,22 +8967,22 @@ const MODULES = [
           "input",
           "params"
         ],
-        "explanation": "<b>argv</b> (argument vector) is the standard list for CLI parameters in the sys module."
+        "explanation": "<b>argv</b> (vecteur d'argument) est la liste standard pour les paramètres CLI dans le module sys."
       }
     ]
   },
   {
     "id": "bash-if",
     "category": "bash",
-    "title": "Bash: If Statements",
-    "desc": "Flow control in the shell",
+    "title": "Bash : Instructions If",
+    "desc": "Contrôle de flux dans le shell",
     "icon": "⚖️",
     "xp": 70,
     "steps": [
       {
         "type": "theory",
-        "title": "Decision Making",
-        "body": "If statements in Bash check the exit status of commands or evaluate expressions inside brackets."
+        "title": "Prise de Décision",
+        "body": "Les instructions If dans Bash vérifient le statut de sortie des commandes ou évaluent des expressions à l'intérieur de crochets."
       },
       {
         "type": "quiz",
@@ -9009,22 +9009,22 @@ const MODULES = [
           "done",
           "stop"
         ],
-        "explanation": "Every <code>if</code> block in Bash must be closed with its reverse: <b>fi</b>."
+        "explanation": "Chaque bloc <code>if</code> dans Bash doit être fermé par son inverse : <b>fi</b>."
       }
     ]
   },
   {
     "id": "bash-cmp",
     "category": "bash",
-    "title": "Bash: Comparison",
-    "desc": "-eq, -lt, and -gt",
+    "title": "Bash : Comparaison",
+    "desc": "-eq, -lt, et -gt",
     "icon": "📐",
     "xp": 75,
     "steps": [
       {
         "type": "theory",
-        "title": "Numeric Checks",
-        "body": "Bash uses flags instead of symbols for numbers: <code>-eq</code> (equal), <code>-gt</code> (greater), <code>-lt</code> (less than)."
+        "title": "Vérifications Numériques",
+        "body": "Bash utilise des drapeaux au lieu de symboles pour les nombres : <code>-eq</code> (égal), <code>-gt</code> (plus grand), <code>-lt</code> (plus petit)."
       },
       {
         "type": "quiz",
@@ -9051,22 +9051,22 @@ const MODULES = [
           "-ge",
           "-max"
         ],
-        "explanation": "<b>-gt</b> is the flag for \"greater than\" when comparing numbers in Bash."
+        "explanation": "<b>-gt</b> est le drapeau pour \"plus grand que\" lors de la comparaison de nombres dans Bash."
       }
     ]
   },
   {
     "id": "bash-case",
     "category": "bash",
-    "title": "Bash: Case",
-    "desc": "Multi-way branching",
+    "title": "Bash : Case",
+    "desc": "Branchement à plusieurs voies",
     "icon": "🔱",
     "xp": 80,
     "steps": [
       {
         "type": "theory",
-        "title": "The Case statement",
-        "body": "Case statements are like switch cases. Use them to match a variable against multiple patterns."
+        "title": "L'instruction Case",
+        "body": "Les instructions Case sont comme des switch cases. Utilisez-les pour faire correspondre une variable à plusieurs motifs."
       },
       {
         "type": "quiz",
@@ -9093,22 +9093,22 @@ const MODULES = [
           "done",
           "fi"
         ],
-        "explanation": "The <b>esac</b> (case backwards) closes the case block."
+        "explanation": "Le <b>esac</b> (case à l'envers) ferme le bloc case."
       }
     ]
   },
   {
     "id": "bash-while",
     "category": "bash",
-    "title": "Bash: While Loops",
-    "desc": "Looping on conditions",
+    "title": "Bash : Boucles While",
+    "desc": "Boucler sur des conditions",
     "icon": "🔄",
     "xp": 75,
     "steps": [
       {
         "type": "theory",
-        "title": "While it lasts",
-        "body": "A <code>while</code> loop continues as long as its condition is true. Perfect for monitoring tasks."
+        "title": "Tant que ça dure",
+        "body": "Une boucle <code>while</code> continue tant que sa condition est vraie. Parfaite pour surveiller des tâches."
       },
       {
         "type": "quiz",
@@ -9131,22 +9131,22 @@ const MODULES = [
           "for",
           "if"
         ],
-        "explanation": "The <b>while</b> keyword initiates a loop that depends on a boolean test."
+        "explanation": "Le mot-clé <b>while</b> initie une boucle qui dépend d'un test booléen."
       }
     ]
   },
   {
     "id": "bash-subs",
     "category": "bash",
-    "title": "Bash: Command Subs",
-    "desc": "Nesting commands",
+    "title": "Bash : Subs de Commande",
+    "desc": "Imbriquer des commandes",
     "icon": "🔗",
     "xp": 80,
     "steps": [
       {
         "type": "theory",
-        "title": "Capturing Output",
-        "body": "Command substitution allows you to use the output of a command as a variable. Use <code>$(cmd)</code>."
+        "title": "Capturer la Sortie",
+        "body": "La substitution de commande vous permet d'utiliser la sortie d'une commande comme variable. Utilisez <code>$(cmd)</code>."
       },
       {
         "type": "quiz",
@@ -9173,22 +9173,22 @@ const MODULES = [
           "$pwd",
           "{pwd}"
         ],
-        "explanation": "<b>$(pwd)</b> runs the command and places its output result into the variable."
+        "explanation": "<b>$(pwd)</b> exécute la commande et place son résultat dans la variable."
       }
     ]
   },
   {
     "id": "bash-env",
     "category": "bash",
-    "title": "Bash: Environment",
-    "desc": "$PATH and Export",
+    "title": "Bash : Environnement",
+    "desc": "$PATH et Export",
     "icon": "🌍",
     "xp": 85,
     "steps": [
       {
         "type": "theory",
-        "title": "The Environment",
-        "body": "Environment variables are inherited by child processes. Use <code>export</code> to make a variable available everywhere."
+        "title": "L'Environnement",
+        "body": "Les variables d'environnement sont héritées par les processus enfants. Utilisez <code>export</code> pour rendre une variable disponible partout."
       },
       {
         "type": "quiz",
@@ -9211,22 +9211,22 @@ const MODULES = [
           "env",
           "global"
         ],
-        "explanation": "<b>export</b> promotes a local shell variable to an environment variable."
+        "explanation": "<b>export</b> promeut une variable shell locale en variable d'environnement."
       }
     ]
   },
   {
     "id": "bash-alias",
     "category": "bash",
-    "title": "Bash: Aliases",
-    "desc": "Custom command shortcuts",
+    "title": "Bash : Alias",
+    "desc": "Raccourcis de commandes personnalisés",
     "icon": "🔖",
     "xp": 70,
     "steps": [
       {
         "type": "theory",
-        "title": "Creating Shortcuts",
-        "body": "Aliases allow you to create short names for long commands. Example: <code>alias ll=\"ls -l\"</code>."
+        "title": "Création de Raccourcis",
+        "body": "Les alias vous permettent de créer des noms courts pour des commandes longues. Exemple : <code>alias ll=\"ls -l\"</code>."
       },
       {
         "type": "quiz",
@@ -9249,22 +9249,22 @@ const MODULES = [
           "set",
           "cmd"
         ],
-        "explanation": "The <b>alias</b> command maps a short string to a longer instruction."
+        "explanation": "La commande <b>alias</b> mappe une chaîne courte à une instruction plus longue."
       }
     ]
   },
   {
     "id": "bash-sed",
     "category": "bash",
-    "title": "Bash: Sed",
-    "desc": "Stream Editor basics",
+    "title": "Bash : Sed",
+    "desc": "Bases de l'éditeur de flux",
     "icon": "📝",
     "xp": 90,
     "steps": [
       {
         "type": "theory",
-        "title": "Search & Replace",
-        "body": "<code>sed</code> is used to perform basic text transformations on an input stream."
+        "title": "Rechercher & Remplacer",
+        "body": "<code>sed</code> est utilisé pour effectuer des transformations de texte de base sur un flux d'entrée."
       },
       {
         "type": "quiz",
@@ -9287,22 +9287,22 @@ const MODULES = [
           "\"replace/hello/hi\"",
           "/hello/hi/"
         ],
-        "explanation": "The <b>s</b> command in sed stands for \"substitute\"."
+        "explanation": "La commande <b>s</b> dans sed signifie \"substituer\"."
       }
     ]
   },
   {
     "id": "bash-awk",
     "category": "bash",
-    "title": "Bash: Awk Intro",
-    "desc": "Processing columns",
+    "title": "Bash : Intro Awk",
+    "desc": "Traitement de colonnes",
     "icon": "📋",
     "xp": 95,
     "steps": [
       {
         "type": "theory",
-        "title": "The Power of Columns",
-        "body": "<code>awk</code> is designed for data extraction and reporting. It treats files as columns ($1, $2, etc)."
+        "title": "La Puissance des Colonnes",
+        "body": "<code>awk</code> est conçu pour l'extraction de données et le reporting. Il traite les fichiers comme des colonnes ($1, $2, etc)."
       },
       {
         "type": "quiz",
@@ -9329,22 +9329,22 @@ const MODULES = [
           "$first",
           "a"
         ],
-        "explanation": "In <b>awk</b>, <b>$1</b> represents the first field (column) of the current line."
+        "explanation": "Dans <b>awk</b>, <b>$1</b> représente le premier champ (colonne) de la ligne actuelle."
       }
     ]
   },
   {
     "id": "bash-trap",
     "category": "bash",
-    "title": "Bash: Trap",
-    "desc": "Catching signals",
+    "title": "Bash : Trap",
+    "desc": "Intercepter des signaux",
     "icon": "🪤",
     "xp": 90,
     "steps": [
       {
         "type": "theory",
-        "title": "Signal Handling",
-        "body": "Scripts can catch signals from the system (like Ctrl+C) using the <code>trap</code> command to perform cleanup."
+        "title": "Gestion des Signaux",
+        "body": "Les scripts peuvent capturer les signaux du système (comme Ctrl+C) en utilisant la commande <code>trap</code> pour effectuer un nettoyage."
       },
       {
         "type": "quiz",
@@ -9367,7 +9367,7 @@ const MODULES = [
           "on",
           "event"
         ],
-        "explanation": "The <b>trap</b> command allows you to execute a specific command when a signal is received."
+        "explanation": "La commande <b>trap</b> vous permet d'exécuter une commande spécifique lorsqu'un signal est reçu."
       }
     ]
   }

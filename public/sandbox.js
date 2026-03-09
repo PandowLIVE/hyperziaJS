@@ -2,7 +2,8 @@
    SANDBOX — JS & TypeScript Code Editor
    ═══════════════════════════════════════════ */
 
-let sandboxLang = 'javascript'; // 'javascript' or 'typescript'
+let sandboxLang = 'javascript'; // 'javascript', 'typescript', or 'python'
+let pyodideInstance = null;
 
 const STARTER_CODE = {
   javascript: `// 🧪 JavaScript Sandbox
@@ -40,7 +41,36 @@ console.log(identity("hello"));
 
 // Enums
 enum Color { Red, Green, Blue }
-console.log("Blue =", Color.Blue);`
+console.log("Blue =", Color.Blue);`,
+
+  python: `# 🐍 Python Sandbox
+# Write Python code and click "Run" (uses Pyodide)
+
+print("Hello, Python!")
+
+# Calculate something
+nums = [1, 2, 3, 4, 5]
+total = sum(nums)
+print(f"Sum: {total}")
+
+# Functions
+def double(n):
+    return n * 2
+
+print("Doubled:", list(map(double, nums)))`,
+
+  bash: `# 🐚 Bash Sandbox
+# Type commands and click "Run" (Simulated)
+
+echo "Hello from Bash!"
+
+# Navigation
+pwd
+ls -l
+
+# Variables
+NAME="Hyperzia"
+echo "Welcome to $NAME"`
 };
 
 function initSandbox() {
@@ -89,6 +119,15 @@ function switchSandboxLang(lang) {
   const editor = document.getElementById('sandbox-editor');
   if (editor) {
     editor.value = STARTER_CODE[lang] || STARTER_CODE.javascript;
+    if (lang === 'python') {
+      editor.placeholder = "Write Python code here...";
+    } else if (lang === 'typescript') {
+      editor.placeholder = "Write TypeScript code here...";
+    } else if (lang === 'bash') {
+      editor.placeholder = "Type Bash commands here...";
+    } else {
+      editor.placeholder = typeof t === 'function' ? t('sandbox_ph') : "Type your JavaScript here...";
+    }
   }
   const output = document.getElementById('sandbox-output');
   if (output) {
@@ -102,9 +141,78 @@ function runCode(editor, outputEl) {
 
   if (sandboxLang === 'typescript') {
     runTypeScript(code, outputEl);
+  } else if (sandboxLang === 'python') {
+    runPython(code, outputEl);
+  } else if (sandboxLang === 'bash') {
+    runBash(code, outputEl);
   } else {
     runJavaScript(code, outputEl);
   }
+}
+
+/* ── Python Runner ─────────────────────── */
+async function runPython(code, outputEl) {
+  if (!pyodideInstance) {
+    displayOutput(outputEl, [{ type: 'log', text: '📥 Loading Python engine (Pyodide)...' }]);
+    try {
+      pyodideInstance = await loadPyodide();
+      displayOutput(outputEl, [{ type: 'log', text: '✅ Python ready!' }]);
+    } catch (err) {
+      displayOutput(outputEl, [{ type: 'error', text: 'Failed to load Pyodide: ' + err.message }]);
+      return;
+    }
+  }
+
+  const logs = [];
+  pyodideInstance.setStdout({
+    batched: (str) => logs.push({ type: 'log', text: str.trim() })
+  });
+  pyodideInstance.setStderr({
+    batched: (str) => logs.push({ type: 'error', text: str.trim() })
+  });
+
+  try {
+    await pyodideInstance.runPythonAsync(code);
+    displayOutput(outputEl, logs);
+  } catch (err) {
+    logs.push({ type: 'error', text: err.toString() });
+    displayOutput(outputEl, logs);
+  }
+}
+
+/* ── Bash Runner (Mock) ────────────────── */
+function runBash(code, outputEl) {
+  const lines = code.split('\n');
+  const logs = [];
+  const vars = { PWD: '/home/user', NAME: 'User' };
+  
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) return;
+
+    // Direct variable assignment
+    if (/^\w+=/.test(trimmed)) {
+      const [key, ...val] = trimmed.split('=');
+      vars[key] = val.join('=').replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1');
+      return;
+    }
+
+    const replaceVars = (str) => str.replace(/\$(\w+)/g, (_, key) => vars[key] || '');
+
+    if (trimmed.startsWith('echo ')) {
+      logs.push({ type: 'log', text: replaceVars(trimmed.substring(5).replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1')) });
+    } else if (trimmed === 'pwd') {
+      logs.push({ type: 'log', text: vars.PWD });
+    } else if (trimmed.startsWith('ls')) {
+      logs.push({ type: 'log', text: 'total 3\n-rw-r--r--  1 user  group    42 Mar  9 09:42 README.md\ndrwxr-xr-x  2 user  group    64 Mar  9 09:42 src\n-rwxr-xr-x  1 user  group  1024 Mar  9 09:42 main.sh' });
+    } else if (trimmed.startsWith('mkdir ') || trimmed.startsWith('touch ') || trimmed.startsWith('rm ')) {
+      logs.push({ type: 'log', text: `› ${trimmed.split(' ')[0]}: success` });
+    } else {
+      logs.push({ type: 'warn', text: `bash: ${trimmed.split(' ')[0]}: command not found (Simulation)` });
+    }
+  });
+
+  displayOutput(outputEl, logs);
 }
 
 /* ── JavaScript Runner ─────────────────── */

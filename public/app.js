@@ -12,7 +12,11 @@ let currentStep = 0;
 let filledBlanks = {};
 let selectedBlankId = null;
 let currentTab = 'home'; // 'home' or 'sandbox'
-let activeCourse = 'all'; // 'all', 'js', 'ts', 'node'
+let activeCourse = 'all'; // 'all', 'js', 'ts', 'node', 'py'
+
+function getModules() {
+    return (currentLang === 'fr' && typeof MODULES_FR !== 'undefined') ? MODULES_FR : MODULES;
+}
 
 /* ── DOM REFS ──────────────────────────── */
 const $ = id => document.getElementById(id);
@@ -36,7 +40,7 @@ function switchAuthTab(mode) {
     authMode = mode;
     $('tab-login').classList.toggle('active', mode === 'login');
     $('tab-register').classList.toggle('active', mode === 'register');
-    $('auth-submit-btn').textContent = mode === 'login' ? 'Log In' : 'Sign Up';
+    $('auth-submit-btn').textContent = mode === 'login' ? t('btn_login') : t('btn_signup');
     $('auth-error').textContent = '';
 }
 
@@ -49,7 +53,7 @@ async function handleAuth(e) {
 
     errorEl.textContent = '';
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Loading…';
+    submitBtn.textContent = t('auth_loading');
 
     try {
         const endpoint = authMode === 'login' ? '/api/login' : '/api/register';
@@ -62,9 +66,9 @@ async function handleAuth(e) {
         const data = await res.json();
 
         if (!res.ok) {
-            errorEl.textContent = data.error || 'Something went wrong.';
+            errorEl.textContent = data.error || t('auth_error');
             submitBtn.disabled = false;
-            submitBtn.textContent = authMode === 'login' ? 'Log In' : 'Sign Up';
+            submitBtn.textContent = authMode === 'login' ? t('btn_login') : t('btn_signup');
             return;
         }
 
@@ -75,9 +79,9 @@ async function handleAuth(e) {
         enterApp();
 
     } catch (err) {
-        errorEl.textContent = 'Network error. Is the server running?';
+        errorEl.textContent = t('auth_network');
         submitBtn.disabled = false;
-        submitBtn.textContent = authMode === 'login' ? 'Log In' : 'Sign Up';
+        submitBtn.textContent = authMode === 'login' ? t('btn_login') : t('btn_signup');
     }
 }
 
@@ -156,16 +160,17 @@ function renderHome() {
     bottomNav.style.display = 'flex';
 
     // Stats (all modules)
+    const activeModules = getModules();
     const done = state.completed.length;
-    const total = MODULES.length;
+    const total = activeModules.length;
     $('stat-completed').textContent = `${done} / ${total}`;
     $('stat-xp').textContent = state.xp;
-    $('xp-display').textContent = `${state.xp} XP`;
+    $('xp-display').textContent = `${state.xp} ${t('module_xp')}`;
     $('progress-fill').style.width = `${(done / total) * 100}%`;
 
     // Greeting
     const hr = new Date().getHours();
-    let greetWord = hr < 12 ? 'Good Morning' : hr < 18 ? 'Good Afternoon' : 'Good Evening';
+    let greetWord = hr < 12 ? t('greeting_morning') : hr < 18 ? t('greeting_afternoon') : t('greeting_evening');
     const name = currentUser ? `, ${currentUser.username}` : '';
     $('greeting-text').textContent = `${greetWord}${name} ⚡`;
 
@@ -178,17 +183,18 @@ function renderHome() {
 }
 
 function renderModuleList() {
+    const activeModules = getModules();
     const filtered = activeCourse === 'all'
-        ? MODULES
-        : MODULES.filter(m => m.category === activeCourse);
+        ? activeModules
+        : activeModules.filter(m => m.category === activeCourse);
 
     const list = $('module-list');
     list.innerHTML = '';
     filtered.forEach((mod) => {
-        const globalIdx = MODULES.indexOf(mod);
+        const globalIdx = activeModules.indexOf(mod);
         const isDone = state.completed.includes(mod.id);
         // Lock: only within same category
-        const prevInCat = MODULES.slice(0, globalIdx).filter(m => m.category === mod.category);
+        const prevInCat = activeModules.slice(0, globalIdx).filter(m => m.category === mod.category);
         const prevMod = prevInCat.length > 0 ? prevInCat[prevInCat.length - 1] : null;
         const isLocked = prevMod && !state.completed.includes(prevMod.id) && !isDone;
         const card = document.createElement('div');
@@ -200,7 +206,7 @@ function renderModuleList() {
         <p>${mod.desc}</p>
       </div>
       <span class="module-badge ${isDone ? 'done' : isLocked ? 'lock' : 'xp'}">
-        ${isDone ? '✓ Done' : isLocked ? '🔒' : `+${mod.xp} XP`}
+        ${isDone ? t('module_done') : isLocked ? t('module_lock') : `+${mod.xp} ${t('module_xp')}`}
       </span>
     `;
         if (!isLocked) card.addEventListener('click', () => startModule(mod));
@@ -253,14 +259,14 @@ function renderStep() {
     if (step.type === 'theory') {
         renderTheory(content, step);
         actionBar.style.display = 'block';
-        actionBtn.textContent = 'Continue';
+        actionBtn.textContent = t('btn_continue');
         actionBtn.disabled = false;
         actionBtn.className = 'btn-primary success';
         actionBtn.onclick = nextStep;
     } else if (step.type === 'quiz') {
         renderQuiz(content, step);
         actionBar.style.display = 'block';
-        actionBtn.textContent = 'Check Answer';
+        actionBtn.textContent = t('btn_check');
         actionBtn.disabled = true;
         actionBtn.className = 'btn-primary';
         actionBtn.onclick = () => checkAnswer(step);
@@ -279,7 +285,7 @@ function renderTheory(container, step) {
 function renderQuiz(container, step) {
     const titleEl = document.createElement('div');
     titleEl.className = 'theory-card';
-    titleEl.innerHTML = `<h3>🧩 ${step.title}</h3><p>Tap a blank, then tap an option to fill it in.</p>`;
+    titleEl.innerHTML = `<h3>🧩 ${step.title}</h3><p>${currentLang === 'fr' ? "Appuyez sur un espace, puis sur une option pour le remplir." : "Tap a blank, then tap an option to fill it in."}</p>`;
     container.appendChild(titleEl);
 
     const codeEl = document.createElement('div');
@@ -312,7 +318,7 @@ function renderQuiz(container, step) {
 
     const optLabel = document.createElement('div');
     optLabel.className = 'options-label';
-    optLabel.textContent = 'Choose an option';
+    optLabel.textContent = t('choose_option');
     container.appendChild(optLabel);
 
     const optGrid = document.createElement('div');
@@ -408,19 +414,19 @@ function showFeedbackModal(correct, step) {
         iconEl.className = 'icon-circle correct';
         iconEl.textContent = '✓';
         titleEl.className = 'correct-title';
-        titleEl.textContent = 'Correct! 🎉';
+        titleEl.textContent = t('modal_correct');
         textEl.innerHTML = step.explanation;
         btnEl.className = 'btn-modal correct-btn';
-        btnEl.textContent = 'Continue';
+        btnEl.textContent = t('btn_continue');
         btnEl.onclick = () => { hideModal(); nextStep(); };
     } else {
         iconEl.className = 'icon-circle incorrect';
         iconEl.textContent = '✗';
         titleEl.className = 'incorrect-title';
-        titleEl.textContent = 'Not quite…';
+        titleEl.textContent = t('modal_incorrect');
         textEl.innerHTML = step.explanation;
         btnEl.className = 'btn-modal incorrect-btn';
-        btnEl.textContent = 'Try Again';
+        btnEl.textContent = t('modal_try_again');
         btnEl.onclick = () => { hideModal(); renderStep(); };
     }
 
@@ -455,14 +461,15 @@ function completeModule() {
     }
 
     actionBar.style.display = 'none';
-    $('complete-title').textContent = `${currentModule.title} Complete!`;
-    $('complete-xp').innerHTML = `⭐ +${currentModule.xp} XP`;
-    $('xp-display').textContent = `${state.xp} XP`;
+    $('complete-title').textContent = `${currentModule.title} ${currentLang === 'fr' ? 'terminé !' : 'Complete!'}`;
+    $('complete-xp').innerHTML = `⭐ +${currentModule.xp} ${t('module_xp')}`;
+    $('xp-display').textContent = `${state.xp} ${t('module_xp')}`;
 
-    const remaining = MODULES.length - state.completed.length;
+    const activeModules = getModules();
+    const remaining = activeModules.length - state.completed.length;
     $('complete-msg').textContent = remaining > 0
-        ? `Great work! You have ${remaining} module${remaining > 1 ? 's' : ''} left to conquer.`
-        : `You've completed all modules! You're a JavaScript rockstar! 🎸`;
+        ? t('complete_msg_more').replace('{n}', remaining)
+        : t('complete_msg_all');
 
     showScreen('complete');
     launchConfetti();
@@ -518,3 +525,17 @@ $('logout-btn').addEventListener('click', logout);
 
 /* ── INIT (show auth screen) ───────────── */
 // App starts on the auth screen — no auto-login
+
+function updateDynamicTranslation() {
+    if (currentTab === 'home') {
+        renderHome();
+    }
+    // Also update actionBtn if visible
+    if (actionBar.style.display === 'block') {
+        if (actionBtn.classList.contains('success')) {
+            actionBtn.textContent = t('btn_continue');
+        } else {
+            actionBtn.textContent = t('btn_check');
+        }
+    }
+}

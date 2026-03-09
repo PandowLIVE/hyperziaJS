@@ -12,37 +12,43 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
 </head>
 
 <body>
 
-    <!-- ═══════════ AUTH SCREEN ═══════════ -->
     <section class="auth-screen active" id="auth-screen">
         <div class="auth-container">
+            <div style="text-align: right; margin-bottom: 20px;">
+                <select class="lang-select auth-lang-select" onchange="setLang(this.value)">
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
             <div class="auth-logo">
-                <h1>Hyperzia JS</h1>
-                <p>Learn JavaScript, one bite at a time</p>
+                <h1 data-i18n="app_title">Hyperzia JS</h1>
+                <p data-i18n="app_subtitle">Learn JavaScript, one bite at a time</p>
             </div>
 
             <div class="auth-card" id="auth-card">
                 <div class="auth-tabs">
-                    <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Log In</button>
-                    <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Sign Up</button>
+                    <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')" data-i18n="tab_login">Log In</button>
+                    <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')" data-i18n="tab_signup">Sign Up</button>
                 </div>
 
                 <form id="auth-form" onsubmit="handleAuth(event)">
                     <div class="input-group">
-                        <label for="auth-username">Username</label>
-                        <input type="text" id="auth-username" placeholder="Enter username" autocomplete="username"
+                        <label for="auth-username" data-i18n="username">Username</label>
+                        <input type="text" id="auth-username" data-i18n="username_ph" placeholder="Enter username" autocomplete="username"
                             required minlength="2" maxlength="20">
                     </div>
                     <div class="input-group">
-                        <label for="auth-password">Password</label>
-                        <input type="password" id="auth-password" placeholder="Enter password"
+                        <label for="auth-password" data-i18n="password">Password</label>
+                        <input type="password" id="auth-password" data-i18n="password_ph" placeholder="Enter password"
                             autocomplete="current-password" required minlength="4">
                     </div>
                     <div class="auth-error" id="auth-error"></div>
-                    <button type="submit" class="btn-primary" id="auth-submit-btn">Log In</button>
+                    <button type="submit" class="btn-primary" id="auth-submit-btn" data-i18n="btn_login">Log In</button>
                 </form>
             </div>
         </div>
@@ -56,7 +62,7 @@
             <div class="header-inner">
                 <div class="logo">
                     <div class="logo-icon">⚡</div>
-                    <span>Hyperzia JS</span>
+                    <span data-i18n="header_title">Hyperzia JS</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:10px">
                     <div class="xp-badge" id="header-xp">
@@ -66,6 +72,10 @@
                         </svg>
                         <span id="xp-display">0 XP</span>
                     </div>
+                    <select class="lang-select header-lang-select" onchange="setLang(this.value)">
+                        <option value="en">EN</option>
+                        <option value="fr">FR</option>
+                    </select>
                     <button class="logout-btn" id="logout-btn" title="Log out">⏻</button>
                 </div>
             </div>
@@ -83,11 +93,11 @@
                 <div class="progress-overview" id="progress-overview">
                     <div class="progress-stats">
                         <div class="progress-stat">
-                            <div class="label">Completed</div>
+                            <div class="label" data-i18n="stat_completed">Completed</div>
                             <div class="value" id="stat-completed">0 / 30</div>
                         </div>
                         <div class="progress-stat">
-                            <div class="label">Total XP</div>
+                            <div class="label" data-i18n="stat_xp">Total XP</div>
                             <div class="value" id="stat-xp">0</div>
                         </div>
                     </div>
@@ -96,12 +106,14 @@
                     </div>
                 </div>
 
-                <div class="section-title">Modules</div>
+                <div class="section-title" data-i18n="section_modules">Modules</div>
                 <div class="course-tabs" id="course-tabs">
-                    <button class="course-tab active" data-cat="all" onclick="filterCourse('all')">All</button>
-                    <button class="course-tab" data-cat="js" onclick="filterCourse('js')">⚡ JavaScript</button>
-                    <button class="course-tab" data-cat="ts" onclick="filterCourse('ts')">🔷 TypeScript</button>
-                    <button class="course-tab" data-cat="node" onclick="filterCourse('node')">🟢 Node.js</button>
+                    <button class="course-tab active" data-cat="all" onclick="filterCourse('all')" data-i18n="tab_all">All</button>
+                    <button class="course-tab" data-cat="js" onclick="filterCourse('js')" data-i18n="tab_js">⚡ JavaScript</button>
+                    <button class="course-tab" data-cat="ts" onclick="filterCourse('ts')" data-i18n="tab_ts">🔷 TypeScript</button>
+                    <button class="course-tab" data-cat="node" onclick="filterCourse('node')" data-i18n="tab_node">🟢 Node.js</button>
+                    <button class="course-tab" data-cat="py" onclick="filterCourse('py')" data-i18n="tab_py">🐍 Python</button>
+                    <button class="course-tab" data-cat="bash" onclick="filterCourse('bash')" data-i18n="tab_bash">🐚 Bash</button>
                 </div>
                 <div class="module-list" id="module-list"></div>
             </section>
@@ -121,10 +133,10 @@
             <section class="screen" id="complete-screen">
                 <div class="completion-card">
                     <div class="trophy">🏆</div>
-                    <h2 id="complete-title">Module Complete!</h2>
+                    <h2 id="complete-title" data-i18n="complete_title">Module Complete!</h2>
                     <div class="xp-earned" id="complete-xp">⭐ +50 XP</div>
                     <p id="complete-msg">You're making great progress. Keep going!</p>
-                    <button class="btn-primary" id="complete-home-btn" style="max-width:320px;margin:0 auto">Back to
+                    <button class="btn-primary" id="complete-home-btn" style="max-width:320px;margin:0 auto" data-i18n="complete_back">Back to
                         Modules</button>
                 </div>
             </section>
@@ -132,24 +144,26 @@
             <!-- SANDBOX -->
             <section class="screen" id="sandbox-screen">
                 <div class="sandbox-header">
-                    <h2>🧪 Sandbox</h2>
-                    <p>Write and run code freely</p>
+                    <h2 data-i18n="sandbox_title">🧪 Sandbox</h2>
+                    <p data-i18n="sandbox_sub">Write and run code freely</p>
                 </div>
                 <div class="sandbox-lang-tabs">
                     <button class="sandbox-lang-tab active" data-lang="javascript">⚡ JavaScript</button>
                     <button class="sandbox-lang-tab" data-lang="typescript">🔷 TypeScript</button>
+                    <button class="sandbox-lang-tab" data-lang="python">🐍 Python</button>
+                    <button class="sandbox-lang-tab" data-lang="bash">🐚 Bash</button>
                 </div>
                 <div class="sandbox-editor-wrap">
-                    <textarea id="sandbox-editor" class="sandbox-editor" spellcheck="false"
+                    <textarea id="sandbox-editor" class="sandbox-editor" spellcheck="false" data-i18n="sandbox_ph"
                         placeholder="Type your JavaScript here..."></textarea>
                 </div>
                 <div class="sandbox-actions">
-                    <button class="btn-sandbox run" id="sandbox-run">▶ Run</button>
-                    <button class="btn-sandbox clear" id="sandbox-clear">✕ Clear</button>
+                    <button class="btn-sandbox run" id="sandbox-run" data-i18n="btn_run">▶ Run</button>
+                    <button class="btn-sandbox clear" id="sandbox-clear" data-i18n="btn_clear">✕ Clear</button>
                 </div>
-                <div class="sandbox-output-label">Console Output</div>
+                <div class="sandbox-output-label" data-i18n="console_label">Console Output</div>
                 <div class="sandbox-output" id="sandbox-output">
-                    <span class="sandbox-placeholder">Output will appear here…</span>
+                    <span class="sandbox-placeholder" data-i18n="console_ph">Output will appear here…</span>
                 </div>
             </section>
         </main>
@@ -157,7 +171,7 @@
         <!-- ═══════════ ACTION BAR ═══════════ -->
         <div class="action-bar" id="action-bar" style="display:none">
             <div class="action-bar-inner">
-                <button class="btn-primary" id="action-btn" disabled>Check Answer</button>
+                <button class="btn-primary" id="action-btn" data-i18n="btn_check" disabled>Check Answer</button>
             </div>
         </div>
 
@@ -165,11 +179,11 @@
         <nav class="bottom-nav" id="bottom-nav">
             <button class="nav-item active" data-screen="home" id="nav-learn" onclick="switchTab('home')">
                 <span class="nav-icon">📚</span>
-                <span class="nav-label">Learn</span>
+                <span class="nav-label" data-i18n="nav_learn">Learn</span>
             </button>
             <button class="nav-item" data-screen="sandbox" id="nav-sandbox" onclick="switchTab('sandbox')">
                 <span class="nav-icon">🧪</span>
-                <span class="nav-label">Sandbox</span>
+                <span class="nav-label" data-i18n="nav_sandbox">Sandbox</span>
             </button>
         </nav>
 
@@ -177,9 +191,9 @@
         <div class="modal-overlay" id="modal-overlay">
             <div class="modal-sheet" id="modal-sheet">
                 <div class="icon-circle" id="modal-icon">✓</div>
-                <h3 id="modal-title">Correct!</h3>
+                <h3 id="modal-title" data-i18n="modal_correct">Correct!</h3>
                 <p id="modal-text">—</p>
-                <button class="btn-modal" id="modal-btn">Continue</button>
+                <button class="btn-modal" id="modal-btn" data-i18n="btn_continue">Continue</button>
             </div>
         </div>
 
@@ -188,7 +202,9 @@
     </div>
 
     <!-- ═══════════ SCRIPTS ═══════════ -->
+    <script src="i18n.js"></script>
     <script src="modules.js"></script>
+    <script src="modules_fr.js"></script>
     <script src="sandbox.js"></script>
     <script src="app.js"></script>
 </body>

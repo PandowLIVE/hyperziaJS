@@ -18,5 +18,9 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@vitalets/google-translate-api": "^9.2.1",
+    "bing-translate-api": "^4.2.0"
   }
 }
